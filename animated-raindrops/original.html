@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+  <link href="../shared/dwitter/dwitter.css" rel="stylesheet" type="text/css">
+  <script src="../shared/dwitter/setupDwitter.js"></script>
+</head>
+<body>
+  <canvas id=c></canvas>
+  <script>
+    /*
+      This is the original animated raindrop effect.
+      All credit goes to Renaud___ on Dwitter.
+      https://www.dwitter.net/d/1494
+    */
+    function dweet(t) {
+      l=c.width+=i=0;h=400;for(;++i<200;)for(j=a=(t+C(i))%2;j++<50;)x.fillRect(l*C(i*i)+~~a*(w=a*h-h)*C(j),(~~a?h:a*h)*(C(i)*C(i)+2)+w*S(j)/4,3,3)
+    }
+  </script>
+  <script src="../shared/dwitter/loadDwitter.js"></script>
+  <canvas id="c"></canvas>
+</body>

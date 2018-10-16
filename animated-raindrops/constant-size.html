@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+  <link href="../shared/dwitter/dwitter.css" rel="stylesheet" type="text/css">
+  <script src="../shared/dwitter/setupDwitter.js"></script>
+</head>
+<body>
+  <canvas id=c></canvas>
+  <script>
+    /*
+      This is the raindrop effect with raindrops of a constant size.
+    */
+    function dweet(t) {
+      canvas = c;
+      context = x;
+
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      effect_size = 400;
+      for (i = 1; i < 200; i++) {
+        timing_variation = (time + Math.cos(i)) % 2;
+        for (j = timing_variation; j++ < 50;) {
+          burst_trigger = ~~timing_variation;
+          // Original:
+          // drop_size = timing_variation * effect_size - effect_size;
+          drop_size = 50;
+
+          x_distribution = canvas.width * Math.cos(i * i);
+          x_burst_shape = Math.cos(j);
+
+          y_position = (
+            burst_trigger ? effect_size : timing_variation * effect_size
+          );
+          y_variation = Math.cos(i) * Math.cos(i) + 2;
+          y_drop_shape = Math.sin(j) / 4;
+
+          x_coord = (
+            x_distribution + burst_trigger * drop_size * x_burst_shape
+          );
+          y_coord = y_position * y_variation + drop_size * y_drop_shape;
+
+          context.fillRect(x_coord, y_coord, 3, 3);
+        }
+      }
+    }
+  </script>
+  <script src="../shared/dwitter/loadDwitter.js"></script>
+  <canvas id="c"></canvas>
+</body>

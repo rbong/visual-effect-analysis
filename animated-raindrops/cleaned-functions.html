@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+  <link href="../shared/dwitter/dwitter.css" rel="stylesheet" type="text/css">
+  <script src="../shared/dwitter/setupDwitter.js"></script>
+</head>
+<body>
+  <canvas id=c></canvas>
+  <script>
+    /*
+      This is the raindrop effect with clearer function names for anyone not familiar with the Dwitter API.
+    */
+    function dweet(t) {
+      canvas = c;
+      context = x;
+
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      l = canvas.width;
+      i = 0;
+      h = 400;
+      for (; ++i < 200;) {
+        for (j = a = (t + Math.cos(i)) % 2; j++ < 50;) {
+          context.fillRect(
+            l * Math.cos(i * i) + ~~a * (w = a * h - h) * Math.cos(j),
+            (~~a ? h : a * h) * (Math.cos(i) * Math.cos(i) + 2) + w * Math.sin(j) / 4,
+            3,
+            3
+          );
+        }
+      }
+    }
+  </script>
+  <script src="../shared/dwitter/loadDwitter.js"></script>
+  <canvas id="c"></canvas>
+</body>
